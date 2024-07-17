@@ -61,6 +61,7 @@ RUN pip install --upgrade cycler
 COPY local_install.sh build_xc/xc/python_modules/local_install_fixed.sh
 RUN cd build_xc/xc/python_modules && sh local_install_fixed.sh
 COPY driver.py driver.py
-COPY test.py test.py
-COPY test_without_warning.py test_without_warning.py
+
+VOLUME ["/data"]
+
 CMD ["bin/bash"]

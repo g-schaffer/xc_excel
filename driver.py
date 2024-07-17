@@ -21,21 +21,16 @@ def save_and_execute(hex_input):
         hex_input (str): The input hex string.
     """
     # Convert hex to string
-    script_content = hex_to_string(hex_input)
+    script_content = str(hex_to_string(hex_input).replace("\\n", '\n'))
     
     # Save string to 'runcmd.py'
-    with open("runcmd.py", "w") as file:
+    with open("/data/runcmd.py", "w", encoding="utf8") as file:
         file.write(script_content)
     
     # Execute the 'runcmd.py' file
-    subprocess.run(["python", "runcmd.py"])
+    subprocess.run(["python", "/data/runcmd.py"])
 
 if __name__ == "__main__":
-    # Vérifier si un argument est passé
-    if len(sys.argv) != 2:
-        print("Usage: python execute_hex_script.py <hex_input>")
-        sys.exit(1)
-
     # Récupérer l'argument hexadécimal
     hex_input = sys.argv[1]
     save_and_execute(hex_input)
