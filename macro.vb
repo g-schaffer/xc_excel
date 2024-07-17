@@ -54,7 +54,7 @@ Sub RunDockerCommand()
     Set shell = CreateObject("WScript.Shell")
     
     ' Concaténation de la commande avec la variable hexadécimale
-    command = "powershell -command ""docker run my:latest python driver.py " & StringToHex(scrpt) & """"
+    command = "powershell -command ""docker run xcimage:1.1 python driver.py " & StringToHex(scrpt) & """"
     
     result = shell.Exec(command).StdOut.ReadAll
 
